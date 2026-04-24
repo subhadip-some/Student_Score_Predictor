@@ -67,20 +67,18 @@ data[f"Diet_Quality_{diet}"] = 1
 data[f"Internet_Quality_{internet}"] = 1
 
 df = pd.DataFrame([data])
-
 # -------------------------
 # Prediction
 # -------------------------
 if st.button("Predict"):
-    pred = model.predict(df)[0]
-    st.success(f"Predicted Score: {pred:.2f}")
-
-if st.button("Show Feature Importance"):
-    fig,ax = plt.subplots()
-    plot_importance(model, ax=ax)
-    st.pyplot(fig)    
-
-# explainer = shap.TreeExplainer(model)
+    try:
+        df_fixed = df 
+        pred = model.predict(df_fixed)[0]
+        st.success(f"Predicted Score: {pred:.2f}")
+    except Exception as e:
+        st.error(f"Error: {str(e)}")
+    
+    # explainer = shap.TreeExplainer(model)
 
 # if st.button("Explain Prediction"):
 #     shap_values = explainer.shap_values(df)
