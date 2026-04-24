@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 import matplotlib.pyplot as plt
 from xgboost import plot_importance
-import shap
+#import shap
 
 model = joblib.load("xgb_model.pkl")
 
@@ -80,23 +80,23 @@ if st.button("Show Feature Importance"):
     plot_importance(model, ax=ax)
     st.pyplot(fig)    
 
-explainer = shap.TreeExplainer(model)
+# explainer = shap.TreeExplainer(model)
 
-if st.button("Explain Prediction"):
-    shap_values = explainer.shap_values(df)
-    st.subheader("SHAP Explaination")
-    st.write("Feature contribution breakdown")
+# if st.button("Explain Prediction"):
+#     shap_values = explainer.shap_values(df)
+#     st.subheader("SHAP Explaination")
+#     st.write("Feature contribution breakdown")
 
-    shap_df = pd.DataFrame({
-        "Features":df.columns,
-        "SHAP Value":shap_values[0]
-    }).sort_values(by="SHAP Value",key = abs,ascending = False)
+#     shap_df = pd.DataFrame({
+#         "Features":df.columns,
+#         "SHAP Value":shap_values[0]
+#     }).sort_values(by="SHAP Value",key = abs,ascending = False)
 
-    st.dataframe(shap_df)
-    fig, ax = plt.subplots(figsize=(8, 6))
-    shap.plots._waterfall.waterfall_legacy(
-        explainer.expected_value,
-        shap_values[0],
-        feature_names=df.columns
-    )
-    st.pyplot(fig)
+#     st.dataframe(shap_df)
+#     fig, ax = plt.subplots(figsize=(8, 6))
+#     shap.plots._waterfall.waterfall_legacy(
+#         explainer.expected_value,
+#         shap_values[0],
+#         feature_names=df.columns
+#     )
+    #st.pyplot(fig)
