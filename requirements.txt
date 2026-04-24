@@ -1,0 +1,7 @@
+streamlit
+pandas
+matplotlib
+xgboost==1.7.6
+shap==0.41.0
+joblib
+scikit-learn
