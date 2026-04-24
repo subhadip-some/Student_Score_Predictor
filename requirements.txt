@@ -2,6 +2,8 @@ streamlit
 pandas
 matplotlib
 xgboost==1.7.6
-shap==0.41.0
-joblib
 scikit-learn
+joblib
+
+numpy==1.24.4
+shap==0.41.0
