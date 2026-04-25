@@ -78,6 +78,11 @@ if st.button("Predict"):
     except Exception as e:
         st.error(f"Error: {str(e)}")
     
+
+if st.button("Show Feature Importance"):
+    fig, ax = plt.subplots()
+    plot_importance(model, ax=ax)
+    st.pyplot(fig)    
     # explainer = shap.TreeExplainer(model)
 
 # if st.button("Explain Prediction"):
